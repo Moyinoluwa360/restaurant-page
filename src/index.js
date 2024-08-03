@@ -2,7 +2,9 @@ import "./style.css"
 import jollof from "./jollof.jpg"
 import menuComponent from "./menu.js"
 import aboutComponent from "./about.js"
-function homeComponents(){
+
+//home component function
+function homeComponent(){
     const contentBody = document.createElement("div")
     contentBody.setAttribute('id',"contentBody")
 
@@ -26,4 +28,32 @@ function homeComponents(){
 }
 
 const content = document.querySelector("#content")
-content.appendChild(aboutComponent())
+
+// appending home component to dom
+content.appendChild(homeComponent())
+
+// remove child 
+function removeChild(){
+    content.removeChild(content.firstChild)
+}
+
+const homeButton = document.querySelector(".homeButton")
+const menuButton = document.querySelector(".menuButton")
+const aboutButton = document.querySelector(".aboutButton")
+
+// event listeners
+
+homeButton.addEventListener("click",()=>{
+    removeChild()
+    content.appendChild(homeComponent())
+})
+
+menuButton.addEventListener("click",()=>{
+    removeChild()
+    content.appendChild(menuComponent(jollof))
+})
+
+aboutButton.addEventListener("click",()=>{
+    removeChild()
+    content.appendChild(aboutComponent())
+})
